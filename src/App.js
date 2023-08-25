@@ -19,27 +19,27 @@ function App() {
    *
    */
   const handlePlayerChoice = (choice) => {
-    const player = _getPlayerChoice(choice);
-    const computer = _getComputerChoice();
+    const player = getPlayerChoice(choice);
+    const computer = getComputerChoice();
     decideResult(player, computer);
   };
 
   /**
-   * @function _getPlayerChoice
+   * @function getPlayerChoice
    * @description コンピューターの手をランダムに決定する
    * @param {number} choice - プレイヤーの選択
    */
-  const _getPlayerChoice = (choice) => {
+  const getPlayerChoice = (choice) => {
     setPlayerChoice(choice);
     return choice;
   };
 
   /**
-   * @function _getComputerChoice
+   * @function getComputerChoice
    * @description コンピューターの手をランダムに決定する
    * @returns {number} - コンピューターの選択
    */
-  const _getComputerChoice = () => {
+  const getComputerChoice = () => {
     const randomChoice = Math.floor(Math.random() * choices.length);
     setComputerChoice(randomChoice);
     return randomChoice;
@@ -69,9 +69,9 @@ function App() {
 
       <div className="mb-8">
         <Heading text="あなたの手" />
-        <Button choice={0} setPlayerChoice={() => handlePlayerChoice(0)} />
-        <Button choice={1} setPlayerChoice={() => handlePlayerChoice(1)} />
-        <Button choice={2} setPlayerChoice={() => handlePlayerChoice(2)} />
+        <Button choice={0} onChoiceClick={() => handlePlayerChoice(0)} />
+        <Button choice={1} onChoiceClick={() => handlePlayerChoice(1)} />
+        <Button choice={2} onChoiceClick={() => handlePlayerChoice(2)} />
       </div>
       <div className="mb-8">
         <Heading text="コンピューターの手" />
